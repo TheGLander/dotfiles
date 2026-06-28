@@ -1,0 +1,53 @@
+[language-server.lsp-log]
+command = "lsp-log"
+args = ["/home/glander/.dotnet/tools/csharp-ls"]
+
+# Set prettierd
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "%{buffer_name}"] }
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "%{buffer_name}"] }
+[[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "%{buffer_name}"] }
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "%{buffer_name}"] }
+[[language]]
+name = "css"
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "%{buffer_name}"] }
+
+# Use csharp-ls for C#
+[[language]]
+name = "c-sharp"
+language-servers = ["csharp-ls"]
+
+# Set debuggers
+[[language]]
+name = "python"
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python"
+args=["-m", "debugpy.adapter"]
+
+[[language.debugger.templates]]
+name = "file"
+request = "launch"
+completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
+args = { program = "{0}", mode = "debug" }
+
+[[language.debugger.templates]]
+name = "module"
+request = "launch"
+completion = [ "module" ]
+args = { module = "{0}"}
+

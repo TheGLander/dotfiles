@@ -1,0 +1,32 @@
+[credential]
+	helper = /usr/bin/git-credential-manager
+	credentialStore = secretservice
+[core]
+	askpass = /usr/bin/ksshaskpass
+	excludesfile = /home/glander/.gitignore
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
+[init]
+	defaultBranch = master
+[pull]
+	ff = only
+	rebase = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[push]
+	autoSetupRemote = true
+[alias]
+	stashs = stash push -S
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[depot-tools]
+	allowGlobalGitConfig = true

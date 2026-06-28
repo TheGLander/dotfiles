@@ -1,0 +1,40 @@
+theme = "tokyonight_transparent"
+
+[editor]
+line-number = "relative"
+bufferline = "always"
+popup-border = "all"
+end-of-line-diagnostics = "hint"
+continue-comments = false
+# rulers = [80]
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.lsp]
+# enable = false
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25
+
+[keys.normal]
+C-g = [
+  ':insert-output git diff HEAD %{buffer_name} > /tmp/git_diff.txt',
+  ':o "/tmp/git_diff.txt"',
+  ':set-language diff'
+]
+
+A-g = [
+  ':set mouse false',
+  ':insert-output lazygit > /dev/null',
+  ':set mouse true',
+  ':redraw'
+]
